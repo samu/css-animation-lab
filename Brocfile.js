@@ -56,12 +56,4 @@ function prepareTemplates() {
   return jade(templates, {pretty: true})
 }
 
-function copyRemainingAssets() {
-  return pickFiles('app', {
-     srcDir: '/',
-     files: ['**/*.html', 'img/*.*', 'lib/**/*.*'  ],
-     destDir: '.'
-  });
-}
-
-module.exports = mergeTrees([prepareJs(), prepareTemplates(), prepareCss(), copyRemainingAssets()])
+module.exports = mergeTrees([prepareJs(), prepareTemplates(), prepareCss()])
