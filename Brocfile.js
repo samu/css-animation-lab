@@ -16,7 +16,7 @@ function prepareJs() {
     return filterCoffeeScript(tree, {})
   }
 
-  var app = pickCoffeeScripts('www_source/js')
+  var app = pickCoffeeScripts('app/js')
 
   var sourceTrees = [app]
 
@@ -39,20 +39,16 @@ function prepareJs() {
 }
 
 function prepareCss() {
-  var styles = pickFiles('www_source', {
+  var styles = pickFiles('app', {
     srcDir: '/styles',
     destDir: '/styles'
   })
 
-  var lib = pickFiles('www_source', {
-    srcDir: '/lib/ionic/scss',
-    destDir: '/lib'
-  })
-  return compileSass([styles, lib], '/styles/app.scss', 'css/app.css')
+  return compileSass([styles], '/styles/app.scss', 'css/app.css')
 }
 
 function prepareTemplates() {
-  var templates = pickFiles('www_source', {
+  var templates = pickFiles('app', {
     srcDir: '/templates',
     files: ['**/*.jade'],
     destDir: '/templates'
@@ -61,7 +57,7 @@ function prepareTemplates() {
 }
 
 function copyRemainingAssets() {
-  return pickFiles('www_source', {
+  return pickFiles('app', {
      srcDir: '/',
      files: ['**/*.html', 'img/*.*', 'lib/**/*.*'  ],
      destDir: '.'

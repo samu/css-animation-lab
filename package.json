@@ -19,7 +19,6 @@
     "grunt-broccoli": "^0.3.6",
     "grunt-broccoli-build": "^0.4.0",
     "grunt-karma": "^0.9.0",
-    "grunt-sync": "^0.2.0",
     "karma": "^0.12.24",
     "karma-chrome-launcher": "^0.1.5",
     "karma-coffee-preprocessor": "^0.2.1",
