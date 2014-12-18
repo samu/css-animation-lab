@@ -6,6 +6,7 @@ var concat = require('broccoli-concat');
 var mergeTrees = require('broccoli-merge-trees');
 var jade = require('broccoli-jade');
 var env = require('broccoli-env').getEnv();
+var findBowerTrees = require('broccoli-bower');
 
 function prepareJs() {
   function pickCoffeeScripts(root) {
@@ -56,4 +57,8 @@ function prepareTemplates() {
   return jade(templates, {pretty: true})
 }
 
-module.exports = mergeTrees([prepareJs(), prepareTemplates(), prepareCss()])
+// function prepareBowerFiles() {
+//   return pickFiles(findBowerTrees(), {srcDir: '*.js', destDir: '/lib'});
+// }
+
+module.exports = mergeTrees([prepareJs(), prepareTemplates(), prepareCss()].concat(findBowerTrees()));
