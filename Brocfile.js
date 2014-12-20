@@ -54,11 +54,15 @@ function prepareTemplates() {
     files: ['**/*.jade'],
     destDir: '/templates'
   })
+
   return jade(templates, {pretty: true})
 }
 
-// function prepareBowerFiles() {
-//   return pickFiles(findBowerTrees(), {srcDir: '*.js', destDir: '/lib'});
-// }
+function prepareBowerFiles() {
+  return pickFiles(mergeTrees(findBowerTrees()), {
+    srcDir: '/',
+    destDir: '/lib'
+  });
+}
 
-module.exports = mergeTrees([prepareJs(), prepareTemplates(), prepareCss()].concat(findBowerTrees()));
+module.exports = mergeTrees([prepareJs(), prepareTemplates(), prepareCss(), prepareBowerFiles()]);
