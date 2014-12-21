@@ -45,7 +45,7 @@ function prepareCss() {
     destDir: '/styles'
   })
 
-  return compileSass([styles], '/styles/app.scss', 'css/app.css')
+  return compileSass([styles], '/styles/app.scss', '/styles/app.css')
 }
 
 function prepareTemplates() {
